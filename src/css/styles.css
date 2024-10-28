@@ -58,7 +58,7 @@ body {
 .buttonkit:hover {
     background-color: #1e6c60;
     opacity: 0.9;
-    transform: translateY(-1px);
+    transform: translateY(-1px) translateX(0.5px);
 }
 
 
