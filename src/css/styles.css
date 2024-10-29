@@ -1,5 +1,12 @@
+:root {
+    --primary-color: #154666;
+    --secondary-color: #298073;
+    --light-background: #C9F8FE;
+    --accent-color: #184C78;
+}
+
 body {
-    background-color: #C9F8FE;
+    background-color: var(--light-background);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -9,18 +16,20 @@ body {
     margin: auto;
     padding: 2em 0;
     display: flex;
-    justify-content: center;
+    flex-direction: row; 
+    justify-content: space-between; 
 }
 
 .presspage {
     width: 40%;
-    background: url('../img/background.jpg') center center / cover no-repeat;
+    background: url('../img/background.png') center center / cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 5em;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .main_text {
@@ -28,6 +37,7 @@ body {
     font-weight: 700;
     color: #ffffff;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    padding-bottom: 0.3em;
 }
 
 .sec_text {
@@ -35,6 +45,7 @@ body {
     font-weight: 400;
     color: #ffffff;
     margin-top: 0.5em;
+    padding-top: 0.3em;
 }
 
 .buttonkit {
@@ -44,7 +55,7 @@ body {
     padding: 0.7em 1.5em;
     font-size: 1em;
     font-weight: 500;
-    opacity:0.8;
+    opacity: 0.8;
     gap: 0.5em;
     color: #ffffff;
     background-color: #298073;
@@ -65,10 +76,8 @@ body {
     height: 24px;
 }
 
-/* FOR ARTICLES */
-
 .articles {
-    width: 60%;
+    width: 55%;
     padding: 2em;
     background-color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -81,39 +90,58 @@ body {
     gap: 0.5em;
     font-size: 1.8em;
     font-weight: 500;
-    color: #154666;
-    border-bottom: 2px solid #298073;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
     padding-bottom: 0.5em;
     margin-bottom: 1em;
 }
 
 .year {
-    display: flex;             
-    flex-wrap: wrap;          
-    gap: 1em;                 
-    font-size: 1em;
+    display: flex;
+    gap: 1em;
+    font-size: 1.5em;
     color: grey;
     margin-bottom: 1.5em;
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    position: relative; 
 }
 
 .year li {
     list-style: none;
     cursor: pointer;
     transition: color 0.3s ease;
+    white-space: nowrap; 
 }
 
 .year li:hover {
-    color: #154666;
-
+    color: var(--primary-color);
 }
 
+.active-year {
+    color:#154666;
+    font-weight: bold;
+}
+.year::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to left, white, transparent); 
+    pointer-events: none; 
+}
+
+
 .art_events {
-    display: flex;           
+    display: flex;
     align-items: center;
     gap: 1em;
     padding: 1em;
     border-bottom: 1px solid #C9F8FE;
-    flex-wrap: wrap;          
+    flex-wrap: wrap;
 }
 
 .art_events:last-child {
@@ -134,11 +162,15 @@ body {
 }
 
 .date {
+    display: flex;
+    align-items:center;
     text-align: right;
+    margin-left: auto;
+    gap: 0.5em;
 }
 
 .day {
-    font-size: 1.5em;
+    font-size: 2.5em;
     font-weight: 700;
     color: #298073;
 }
@@ -148,3 +180,27 @@ body {
     color: #184C78;
 }
 
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .presspage, .articles {
+        max-width: 90%;
+        margin-bottom: 1em; 
+    }
+
+    .main_text {
+        font-size: 2em;
+    }
+
+    .sec_text {
+        font-size: 1em;
+    }
+
+    .buttonkit {
+        padding: 0.5em 1em;
+        font-size: 0.9em;
+    }
+}
